@@ -8,8 +8,7 @@ import toast, {Toaster} from "react-hot-toast";
 import {useDispatch} from "react-redux";
 import Star from '@mui/icons-material/Star';
 
-import {StarIcon} from "../icons";
-import {addToBasket} from "../slices/basketSlice";
+
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const MAX_RATING = 5;
@@ -20,7 +19,7 @@ const Product = ({
                      name,
                      price,
                      description,
-                     category,
+                     status,
                      image,
                      rating,
                      ratedby
@@ -39,7 +38,7 @@ const Product = ({
             name,
             price,
             description,
-            category,
+            status,
             image,
             ratedby,
             rating,
@@ -67,7 +66,7 @@ const Product = ({
         >
             <Toaster/>
             <p className="absolute top-2 right-2 text-xs italic text-gray-400">
-                {category}
+                {status}
             </p>
             <div className="items-center flex justify-center bg-gray-100 py-8 rounded-lg relative">
                 <div
@@ -85,7 +84,7 @@ const Product = ({
                 <div className={'flex flex-col gap-1 px-1.5'}>
 
                     <div className={'flex flex-row justify-between mt-2'}>
-                        <h4 className={'font-semibold text-lg'}>Macbook M2 2023{name}</h4>
+                        <h4 className={'font-semibold text-lg'}>{name}</h4>
                         <div className="mb-2 font-semibold">
                             <Currency quantity={price} currency="USD"/>
                         </div>
