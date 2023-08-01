@@ -1,67 +1,56 @@
 'use client'
-import { motion } from "framer-motion";
+
 import Image from "next/image";
 import React from "react";
-import Currency from "react-currency-formatter";
-import toast, { Toaster } from "react-hot-toast";
+
+import toast, {Toaster} from "react-hot-toast";
 
 import Star from "@mui/icons-material/Star";
 
 const CheckoutProduct = ({
-  id,
-  title,
-  price,
-  description,
-  category,
-  image,
-  hasPrime,
-  rating,
-}) => {
-  // const dispatch = useDispatch();
+                             id, name, price, description, category, image, ratedby, rating,
+                         }) => {
+    // const dispatch = useDispatch();
 
-  const addItemTOBasket = () => {
-    const loadingToast = toast.loading("Adding Item...");
+    const addItemTOBasket = () => {
+        const loadingToast = toast.loading("Adding Item...");
 
-    const product = {
-      id,
-      title,
-      price,
-      description,
-      category,
-      image,
-      hasPrime,
-      rating,
+        const product = {
+            id, name, price, description, category, image, ratedby, rating,
+        };
+
+
     };
 
 
-  };
-
-
-  return (
-    <div
-      className="grid grid-cols-5"
+    return (<div
+        className="flex"
     >
-      <Toaster />
-      <Image src={image} height={200} width={200} className="object-contain"  alt={"image"}/>
-      <div className="col-span-3 mx-5">
-        <p>{title}</p>
-         <div className="flex">
-                        {Array(customRating)
-                            .fill()
-                            .map((_, i) => (
+        {/*<Toaster/>*/}
+
+        <Image src={image} height={80} width={80} className="object-contain basis-1/5 px-4 md:px-10" alt={"image"}/>
+        <div className="flex justify-between items-center basis-4/5 px-2">
+            <div className={"flex flex-col"}>
+                <p className={"text-sm md:text-lg"}>{name}</p>
+
+                <p className="text-xs my-2 line-clamp-3">{description}</p>
+                 <div className="flex">
+                {Array(rating)
+                    .fill()
+                    .map((_, i) => (
 
 
-                                <Star key={i} className="h-5 text-green-600"/>
-                            ))}
-                        <p className={"text-gray-500 pl-2"}>({ratedby})</p>
-                    </div>
-        <p className="text-xs my-2 line-clamp-3">{description}</p>
-        <Currency quantity={price} currency="USD" />
+                        <Star key={i} className="h-5 text-green-600"/>))}
+                <p className={"text-gray-500 pl-2"}>({ratedby})</p>
+            </div>
+            </div>
 
-      </div>
+            <p className={"font-semibold"}>
+                {new Intl.NumberFormat('en-US', {style: 'currency', currency: "USD"}).format(price)}</p>
 
-    </div>
-  );
+        </div>
+
+    </div>);
 };
 
 export default CheckoutProduct;

@@ -4,8 +4,13 @@ import React from "react";
 
 import {ShoppingCart} from "@mui/icons-material";
 import {useRouter} from "next/navigation";
+import {selectItems} from "@/app/GlobalRedux/Features/basket/basketSlice";
+import {useSelector} from "react-redux";
+
 
 const Header = () => {
+
+    const items = useSelector(selectItems);
 
     const router = useRouter();
 
@@ -27,11 +32,14 @@ const Header = () => {
                 </div>
                 <div
                     onClick={() => router.push("/checkout")}
-                    className="link relative flex items-center"
+                    className="link  flex items-center relative"
                 >
+                    <div
+                        className={'cursor-pointer absolute left-0 -top-1.5 text-[13px] flex flex-col justify-center items-center font-bold  bg-red-600 rounded-full  w-6 h-6  text-white'}>
+                        {items.length} </div>
 
-                    <ShoppingCart className="h-10 text-black font-semibold"/>
-                     <p className={"pl-2 font-semibold"}>Cart</p>
+                    <ShoppingCart fontSize="large"  className="cursor-pointer h-10 text-black font-semibold "/>
+                    <p className={"pl-2 font-semibold"}>Cart</p>
 
 
                 </div>

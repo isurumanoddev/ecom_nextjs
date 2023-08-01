@@ -3,16 +3,14 @@
 import {motion} from "framer-motion";
 import Image from "next/image";
 import React, {useState} from "react";
-import Currency from "react-currency-formatter";
+
 import toast, {Toaster} from "react-hot-toast";
 import {useDispatch} from "react-redux";
 import Star from '@mui/icons-material/Star';
 
-
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-const MAX_RATING = 5;
-const MIN_RATING = 1;
+import {addToBasket} from "@/app/GlobalRedux/Features/basket/basketSlice";
 
 const Product = ({
                      id,
@@ -24,11 +22,12 @@ const Product = ({
                      rating,
                      ratedby
                  }) => {
-    // const dispatch = useDispatch();
-    const [customRating] = useState(
-        Math.floor(Math.random() * (MAX_RATING - MIN_RATING)) + MIN_RATING
-    );
-    const [hasPrime] = useState(Math.random() < 0.5);
+    const dispatch = useDispatch();
+
+    // const [customRating] = useState(
+    //     Math.floor(Math.random() * (MAX_RATING - MIN_RATING)) + MIN_RATING
+    // );
+
 
     const addItemTOBasket = () => {
         const loadingToast = toast.loading("Adding Item...");
@@ -44,6 +43,11 @@ const Product = ({
             rating,
         };
 
+
+        dispatch(addToBasket(product));
+
+
+
         // dispatch(addToBasket(product));
         //
         // toast.success(`Item Added To Basket`, {
@@ -56,6 +60,7 @@ const Product = ({
         //     },
         // });
     };
+
 
     return (
         <motion.div
@@ -86,14 +91,17 @@ const Product = ({
                     <div className={'flex flex-row justify-between mt-2'}>
                         <h4 className={'font-semibold text-lg'}>{name}</h4>
                         <div className="mb-2 font-semibold">
-                            <Currency quantity={price} currency="USD"/>
+                            <p className={"font-semibold"}>
+                                {new Intl.NumberFormat('en-US', {style: 'currency', currency: "USD"}).format(price)}</p>
+
+
                         </div>
                     </div>
 
 
                     <p className="text-sm text-gray-500  line-clamp-2 overflow-hidden">{description}</p>
                     <div className="flex">
-                        {Array(customRating)
+                        {Array(rating)
                             .fill()
                             .map((_, i) => (
 

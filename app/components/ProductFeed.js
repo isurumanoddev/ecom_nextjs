@@ -13,7 +13,7 @@ const ProductFeed = ({ products }) => {
           <Product
             key={id}
             id={id}
-            title={name}
+            name={name}
             price={price}
             description={description}
             category={category}
@@ -28,7 +28,7 @@ const ProductFeed = ({ products }) => {
           <Product
             key={id}
             id={id}
-            title={name}
+            name={name}
             price={price}
             description={description}
             category={category}
