@@ -35,7 +35,7 @@ const Header = () => {
                     className="link  flex items-center relative"
                 >
                     <div
-                        className={'cursor-pointer absolute left-0 -top-1.5 text-[13px] flex flex-col justify-center items-center font-bold  bg-red-600 rounded-full  w-6 h-6  text-white'}>
+                        className={'cursor-pointer absolute left-0 -top-1.5 text-[12px] flex flex-col justify-center items-center font-bold  bg-red-600 rounded-full  w-5 h-5  text-white'}>
                         {items.length} </div>
 
                     <ShoppingCart fontSize="large"  className="cursor-pointer h-10 text-black font-semibold "/>

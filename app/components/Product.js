@@ -11,6 +11,7 @@ import Star from '@mui/icons-material/Star';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 import {addToBasket} from "@/app/GlobalRedux/Features/basket/basketSlice";
+import Link from "next/link";
 
 const Product = ({
                      id,
@@ -47,7 +48,6 @@ const Product = ({
         dispatch(addToBasket(product));
 
 
-
         // dispatch(addToBasket(product));
         //
         // toast.success(`Item Added To Basket`, {
@@ -63,6 +63,7 @@ const Product = ({
 
 
     return (
+
         <motion.div
             initial={{opacity: 0}}
             whileInView={{opacity: 1}}
@@ -73,18 +74,21 @@ const Product = ({
             <p className="absolute top-2 right-2 text-xs italic text-gray-400">
                 {status}
             </p>
-            <div className="items-center flex justify-center bg-gray-100 py-8 rounded-lg relative">
-                <div
-                    className={'absolute right-2.5 top-2.5 rounded-full bg-white p-2.5 cursor-pointer hover:bg-rose-400 transition hover:text-white'}>
-                    <FavoriteBorderIcon/></div>
-                <img
-                    src={image}
-                    alt={name}
+            <Link href={`/product/${id}`}>
+                <div className="items-center flex justify-center bg-gray-100 py-8 rounded-lg relative">
+                    <div
+                        className={'absolute right-2.5 top-2.5 rounded-full bg-white p-2.5 cursor-pointer hover:bg-rose-400 transition hover:text-white'}>
+                        <FavoriteBorderIcon/></div>
+                    <img
+                        src={image}
+                        alt={name}
 
 
-                    className="object-contain h-[170px] w-[170px] "
-                />
-            </div>
+                        className="object-contain h-[170px] w-[170px] "
+                    />
+                </div>
+            </Link>
+
             <div className={"flex flex-col justify-between"}>
                 <div className={'flex flex-col gap-1 px-1.5'}>
 
@@ -92,7 +96,10 @@ const Product = ({
                         <h4 className={'font-semibold text-lg'}>{name}</h4>
                         <div className="mb-2 font-semibold">
                             <p className={"font-semibold"}>
-                                {new Intl.NumberFormat('en-US', {style: 'currency', currency: "USD"}).format(price)}</p>
+                                {new Intl.NumberFormat('en-US', {
+                                    style: 'currency',
+                                    currency: "USD"
+                                }).format(price)}</p>
 
 
                         </div>
@@ -124,6 +131,7 @@ const Product = ({
 
 
         </motion.div>
+
     );
 };
 
