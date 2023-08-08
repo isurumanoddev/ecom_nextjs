@@ -1,7 +1,7 @@
 'use client'
-import React, {useState} from 'react';
+import React from 'react';
 import Star from "@mui/icons-material/Star";
-import ColorButton from "@/app/components/ColorButton";
+
 
 async function getProduct(id) {
     const res = await fetch('https://my-json-server.typicode.com/kodplex/pr-re-ec-products/db')
@@ -41,18 +41,18 @@ async function Page({params}) {
                             alt="Product"
                             className="bg-gray-100 rounded-lg w-full h-full p-4"
                         /><img
-                            src={product.image}
-                            alt="Product"
-                            className="bg-gray-100 rounded-lg w-full h-full p-4"
-                        /><img
-                            src={product.image}
-                            alt="Product"
-                            className="bg-gray-100 rounded-lg w-full h-full p-4"
-                        /><img
-                            src={product.image}
-                            alt="Product"
-                            className="bg-gray-100 rounded-lg w-full h-full p-4"
-                        />
+                        src={product.image}
+                        alt="Product"
+                        className="bg-gray-100 rounded-lg w-full h-full p-4"
+                    /><img
+                        src={product.image}
+                        alt="Product"
+                        className="bg-gray-100 rounded-lg w-full h-full p-4"
+                    /><img
+                        src={product.image}
+                        alt="Product"
+                        className="bg-gray-100 rounded-lg w-full h-full p-4"
+                    />
 
                     </div>
                 </div>
@@ -81,31 +81,35 @@ async function Page({params}) {
                         <p className={"text-gray-500 pl-2"}>({product.ratedBy})</p>
                     </div>
                     <div className={"flex flex-col gap-2 py-2 pb-4 border-b-2 border-gray-300"}>
-                        <h1 className={"text-2xl font-semibold text-black"}>$ 549.00 or 99.00 /month</h1>
+                        <h1 className={"text-2xl font-semibold text-black"}>$ {product.price} or  {(product.price / 6).toFixed(2)} / per month</h1>
                         <p className={"text-sm"}>Suggests payments with 6 month special financing</p>
                     </div>
                     <div className="mt-3 pb-4 border-b-2 border-gray-300">
                         <h2 className="text-lg font-semibold">Choose a Color</h2>
                         <div className="flex gap-3 mt-2">
-                            <ColorButton
-                                color="black"
+                        {/*    <ColorButton*/}
+                        {/*        color="black"*/}
 
 
-                            />
-                            <ColorButton
-                                color="blue-900"
+                        {/*    />*/}
+                        {/*    <ColorButton*/}
+                        {/*        color="blue-900"*/}
 
 
-                            />
-                            <ColorButton
-                                color="red-900"
+                        {/*    />*/}
+                        {/*    <ColorButton*/}
+                        {/*        color="red-900"*/}
 
 
-                            /> <ColorButton
-                            color="green-900"
+                        {/*    /> <ColorButton*/}
+                        {/*    color="green-900"*/}
 
+                        {/*/>*/}
 
-                        />
+                            <button className={`cursor-pointer  flex items-center justify-center h-8 w-8 rounded-full mx-1 bg-red-600 `}/>
+                            <button className={`cursor-pointer  flex items-center justify-center h-8 w-8 rounded-full mx-1 bg-green-600 `}/>
+                            <button className={`cursor-pointer  flex items-center justify-center h-8 w-8 rounded-full mx-1 bg-black `}/>
+                            <button className={`cursor-pointer  flex items-center justify-center h-8 w-8 rounded-full mx-1 bg-blue-600 `}/>
 
                         </div>
                     </div>

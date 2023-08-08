@@ -3,12 +3,13 @@
 import React from 'react';
 import {useSelector} from "react-redux";
 import CheckoutProduct from "@/app/components/CheckoutProduct";
-import {selectItems} from "@/app/GlobalRedux/Features/basket/basketSlice";
+import {selectItems, selectTotal} from "@/app/GlobalRedux/Features/basket/basketSlice";
 
 function Page() {
+
     const items = useSelector(selectItems);
 
-    //   const total = useSelector(selectTotal);
+      const total = useSelector(selectTotal);
     return (
         <div>
             <main className="lg:flex max-w-7xl mx-auto">
@@ -40,13 +41,11 @@ function Page() {
                 <div className="flex flex-col bg-white p-10 shadow-md">
                     {items.length > 0 && (
                         <>
+
                             <h2 className="whitespace-nowrap">
                                 subtotal ({items.length}) items:
-                                {/*<p className={"font-semibold"}>*/}
-                                {/*    {new Intl.NumberFormat('en-US', {*/}
-                                {/*        style: 'currency',*/}
-                                {/*        currency: "USD"*/}
-                                {/*    }).format(price)}</p>*/}
+                                <p className={"font-semibold"}>
+                                    $ {total.toFixed(2)}</p>
                             </h2>
                             <button
                                 role="link"

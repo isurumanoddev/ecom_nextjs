@@ -11,13 +11,12 @@ import {useSelector} from "react-redux";
 const Header = () => {
 
     const items = useSelector(selectItems);
-
     const router = useRouter();
 
 
     return (
         <header>
-            <div className="flex items-center px-4 justify-between shadow border-b-2">
+            <div className="flex items-center px-4 justify-between shadow border-b-2 ">
                 <div
                     onClick={() => router.push("/")}
                     className="mt-2 flex items-center flex-grow ">
@@ -38,7 +37,7 @@ const Header = () => {
                         className={'cursor-pointer absolute left-0 -top-1.5 text-[12px] flex flex-col justify-center items-center font-bold  bg-red-600 rounded-full  w-5 h-5  text-white'}>
                         {items.length} </div>
 
-                    <ShoppingCart fontSize="large"  className="cursor-pointer h-10 text-black font-semibold "/>
+                    <ShoppingCart fontSize="large" className="cursor-pointer h-10 text-black font-semibold "/>
                     <p className={"pl-2 font-semibold"}>Cart</p>
 
 

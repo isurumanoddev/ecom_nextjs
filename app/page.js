@@ -18,7 +18,7 @@ export default async function Home() {
 
 
   return (
-    <main className=" mx-auto max-w-7xl">
+    <main className=" mx-auto max-w-7xl  ">
 
         <ProductFeed products={products.ecommerce.products}  />
       </main>

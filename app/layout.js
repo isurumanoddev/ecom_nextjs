@@ -2,6 +2,7 @@ import './globals.css'
 import {Sora} from 'next/font/google'
 import Header from "@/app/components/Header";
 import {Providers} from "@/app/GlobalRedux/provider";
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Sora({subsets: ['latin']})
 
@@ -19,6 +20,7 @@ export default function RootLayout({children}) {
             <Header/>
 
             {children}
+            <Analytics />
         </Providers>
 
 

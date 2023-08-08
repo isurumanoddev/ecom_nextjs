@@ -25,13 +25,10 @@ const Product = ({
                  }) => {
     const dispatch = useDispatch();
 
-    // const [customRating] = useState(
-    //     Math.floor(Math.random() * (MAX_RATING - MIN_RATING)) + MIN_RATING
-    // );
 
 
     const addItemTOBasket = () => {
-        const loadingToast = toast.loading("Adding Item...");
+        const loadingToast = toast.success("Added Item...");
 
         const product = {
             id,
@@ -45,20 +42,10 @@ const Product = ({
         };
 
 
-        dispatch(addToBasket(product));
+        dispatch(addToBasket(product))
 
 
-        // dispatch(addToBasket(product));
-        //
-        // toast.success(`Item Added To Basket`, {
-        //     id: loadingToast,
-        //
-        //     position: "bottom-right",
-        //     style: {
-        //         textAlign: "center",
-        //         padding: "18px",
-        //     },
-        // });
+
     };
 
 
@@ -125,7 +112,7 @@ const Product = ({
                     onClick={addItemTOBasket}
                     className="transition mt-2 button border-2 w-fit p-2 px-5 border-gray-400 rounded-full text-gray-600 hover:bg-green-600 hover:text-white hover:border-green-600  "
                 >
-                    Add to Busket
+                    Add to Basket
                 </button>
             </div>
 
